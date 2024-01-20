@@ -71,19 +71,21 @@ const clearInput = (form, clearBtn, saveBtn) => {
 
 const deleteTask = (name, tbody) => {
   const btnDelete = document.querySelector('.btn-danger');
-  btnDelete.addEventListener('click', e => {
-    const questionTask = questionDeleteTask();
-    if (questionTask) {
-      const target = e.target;
-      const task = target.closest('tr');
-      if (target.classList.contains('btn-danger')) {
-        const taskID = task.children[0].getAttribute('data-id');
-        removeLocalStore(taskID, name);
-        task.remove();
-        changeTableNumber(tbody);
+  if (btnDelete) {
+    btnDelete.addEventListener('click', e => {
+      const questionTask = questionDeleteTask();
+      if (questionTask) {
+        const target = e.target;
+        const task = target.closest('tr');
+        if (target.classList.contains('btn-danger')) {
+          const taskID = task.children[0].getAttribute('data-id');
+          removeLocalStore(taskID, name);
+          task.remove();
+          changeTableNumber(tbody);
+        }
       }
-    }
-  });
+    });
+  }
 };
 
 const finishTodo = (name, tbody) => {
@@ -118,7 +120,7 @@ const editTask = (name, tbody) => {
     }
   });
 };
-// const LoginProfile = (modal, bntSubmit, inputModal) => {
+// const loginProfile = (modal, bntSubmit, inputModal) => {
 //   inputModal.addEventListener('input', e => {
 //     const target = e.target;
 //     if (target.value.length !== 0) {
@@ -134,12 +136,20 @@ const editTask = (name, tbody) => {
 //     modal.close();
 //   });
 // };
-
+const loginProfile = () => {
+  const loginName = prompt('Напишите ваше имя');
+  if (loginName === null || loginName.length === 0) {
+    loginProfile();
+  } else {
+    return loginName;
+  }
+};
 export default {
   addTask,
   clearInput,
   deleteTask,
   finishTodo,
   editTask,
-  // LoginProfile,
+  // loginProfile,
+  loginProfile,
 };

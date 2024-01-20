@@ -13,13 +13,13 @@ const {
   deleteTask,
   finishTodo,
   editTask,
-  // LoginProfile,
+  loginProfile,
 } = control;
 {
   const init = (selectorApp) => {
     const app = document.querySelector(selectorApp);
-    const promptName = prompt('Напишите ваше имя');
-    const data = getLocalStore(promptName);
+    const loginName = loginProfile();
+    const data = getLocalStore(loginName);
     const {
       form,
       tbody,
@@ -30,14 +30,14 @@ const {
       // inputModal,
     } = renderTodo(app, data);
     // formModal.showModal();
-    // LoginProfile(formModal,
+    // loginProfile(formModal,
     //   bntSubmit,
     //   inputModal);
-    addTask(form, promptName, saveBtn, tbody);
+    addTask(form, loginName, saveBtn, tbody);
     clearInput(form, clearBtn, saveBtn);
-    deleteTask(promptName, tbody);
-    finishTodo(promptName, tbody);
-    editTask(promptName, tbody);
+    deleteTask(loginName, tbody);
+    finishTodo(loginName, tbody);
+    editTask(loginName, tbody);
   };
   window.ToDo = init;
 }
