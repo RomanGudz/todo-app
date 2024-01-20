@@ -141,35 +141,35 @@ const tableWrapper = () => {
   };
 };
 
-// const createModal = () => {
-//   const formModal = document.createElement('dialog');
-//   const forma = document.createElement('form');
-//   const divModal = document.createElement('div');
-//   const titleModal = document.createElement('h3');
-//   titleModal.textContent = 'Добро пожаловать!';
-//   const lableInput = document.createElement('label');
-//   lableInput.classList.add('form-label');
-//   lableInput.textContent = 'Введите ваше Имя';
-//   const inputModal = createInput({
-//     className: 'form-control',
-//     type: 'text',
-//     placeholder: 'Имя',
-//   });
-//   const bntSubmit = createBtn({
-//     className: ['btn', 'btn-primary', 'me-3', 'my-3'],
-//     text: 'Войти',
-//     type: 'submit',
-//   });
-//   bntSubmit.disabled = true;
-//   divModal.append(lableInput, inputModal, bntSubmit);
-//   forma.append(titleModal, divModal)
-//   formModal.append(forma);
-//   return {
-//     formModal,
-//     bntSubmit,
-//     inputModal,
-//   };
-// };
+const createModal = () => {
+  const formModal = document.createElement('dialog');
+  const divModal = document.createElement('div');
+  const titleModal = document.createElement('h3');
+  titleModal.textContent = 'Добро пожаловать!';
+  const lableInput = document.createElement('label');
+  lableInput.classList.add('form-label');
+  lableInput.textContent = 'Введите ваше Имя';
+  const inputModal = createInput({
+    className: 'form-control',
+    type: 'text',
+    placeholder: 'Имя',
+  });
+  inputModal.setAttribute('id', 'loginInput');
+  const bntSubmit = createBtn({
+    className: ['btn', 'btn-primary', 'me-3', 'my-3'],
+    text: 'Войти',
+    type: 'submit',
+  });
+  bntSubmit.disabled = true;
+  bntSubmit.setAttribute('id', 'logiBtn');
+  divModal.append(lableInput, inputModal, bntSubmit);
+  formModal.append(titleModal, divModal);
+  return {
+    formModal,
+    bntSubmit,
+    inputModal,
+  };
+};
 
 export default {
   containerStyle,
@@ -178,5 +178,5 @@ export default {
   tableWrapper,
   createRows,
   createRow,
-  // createModal,
+  createModal,
 };

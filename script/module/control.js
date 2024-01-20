@@ -120,36 +120,40 @@ const editTask = (name, tbody) => {
     }
   });
 };
-// const loginProfile = (modal, bntSubmit, inputModal) => {
-//   inputModal.addEventListener('input', e => {
-//     const target = e.target;
-//     if (target.value.length !== 0) {
-//       bntSubmit.disabled = false;
-//     } else {
-//       bntSubmit.disabled = true;
-//     }
-//   });
-//   bntSubmit.addEventListener('click', e => {
-//     e.preventDefault();
-//     bntSubmit.disabled = true;
-//     inputModal.value = '';
-//     modal.close();
-//   });
-// };
-const loginProfile = () => {
-  const loginName = prompt('Напишите ваше имя');
-  if (loginName === null || loginName.length === 0) {
-    loginProfile();
-  } else {
-    return loginName;
-  }
+const loginProfile = (calback) => {
+  const input = document.getElementById('loginInput');
+  const btnLogin = document.getElementById('logiBtn');
+  let loginName;
+  input.addEventListener('input', e => {
+    const target = e.target;
+    if (target.value.length !== 0) {
+      btnLogin.disabled = false;
+    } else {
+      btnLogin.disabled = true;
+    }
+  });
+  btnLogin.addEventListener('click', e => {
+    e.preventDefault();
+    btnLogin.disabled = true;
+    loginName = input.value;
+    calback(loginName);
+    input.value = '';
+    // modal.close();
+  });
 };
+// const loginProfile = () => {
+//   const loginName = prompt('Напишите ваше имя');
+//   if (loginName === null || loginName.length === 0) {
+//     loginProfile();
+//   } else {
+//     return loginName;
+//   }
+// };
 export default {
   addTask,
   clearInput,
   deleteTask,
   finishTodo,
   editTask,
-  // loginProfile,
   loginProfile,
 };

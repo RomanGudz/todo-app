@@ -18,21 +18,21 @@ const {
 {
   const init = (selectorApp) => {
     const app = document.querySelector(selectorApp);
-    const loginName = loginProfile();
+    const loginName = 'roman';
     const data = getLocalStore(loginName);
     const {
       form,
       tbody,
       saveBtn,
       clearBtn,
-      // formModal,
-      // bntSubmit,
-      // inputModal,
+      formModal,
     } = renderTodo(app, data);
-    // formModal.showModal();
-    // loginProfile(formModal,
-    //   bntSubmit,
-    //   inputModal);
+    formModal.showModal();
+    let login;
+    loginProfile((calback) => {
+      login = calback;
+    });
+    console.log('login: ', login);
     addTask(form, loginName, saveBtn, tbody);
     clearInput(form, clearBtn, saveBtn);
     deleteTask(loginName, tbody);

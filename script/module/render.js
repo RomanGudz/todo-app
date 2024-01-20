@@ -6,16 +6,14 @@ const {
   formToDo,
   tableWrapper,
   createRows,
-  // createModal,
+  createModal,
 } = createElements;
 
 const renderTodo = (app, arr) => {
   containerStyle(app);
-  // const {
-  //   formModal,
-  //   bntSubmit,
-  //   inputModal,
-  // } = createModal();
+  const {
+    formModal,
+  } = createModal();
 
   const title = titleToDo();
   const {
@@ -29,15 +27,13 @@ const renderTodo = (app, arr) => {
   } = tableWrapper();
   const rows = createRows(arr);
   tbody.append(...rows);
-  app.append(title, form, divwrapper);
+  app.append(formModal, title, form, divwrapper);
   return {
     form,
     tbody,
     saveBtn,
     clearBtn,
-    // formModal,
-    // bntSubmit,
-    // inputModal,
+    formModal,
   };
 };
 
