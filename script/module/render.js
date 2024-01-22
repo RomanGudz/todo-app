@@ -6,17 +6,10 @@ const {
   formToDo,
   tableWrapper,
   createRows,
-  // createModal,
 } = createElements;
 
 const renderTodo = (app, arr) => {
   containerStyle(app);
-  // const {
-  //   formModal,
-  //   bntSubmit,
-  //   inputModal,
-  // } = createModal();
-
   const title = titleToDo();
   const {
     form,
@@ -35,9 +28,6 @@ const renderTodo = (app, arr) => {
     tbody,
     saveBtn,
     clearBtn,
-    // formModal,
-    // bntSubmit,
-    // inputModal,
   };
 };
 

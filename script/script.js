@@ -25,14 +25,7 @@ const {
       tbody,
       saveBtn,
       clearBtn,
-      // formModal,
-      // bntSubmit,
-      // inputModal,
     } = renderTodo(app, data);
-    // formModal.showModal();
-    // loginProfile(formModal,
-    //   bntSubmit,
-    //   inputModal);
     addTask(form, loginName, saveBtn, tbody);
     clearInput(form, clearBtn, saveBtn);
     deleteTask(loginName, tbody);

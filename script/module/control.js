@@ -70,22 +70,19 @@ const clearInput = (form, clearBtn, saveBtn) => {
 };
 
 const deleteTask = (name, tbody) => {
-  const btnDelete = document.querySelector('.btn-danger');
-  if (btnDelete) {
-    btnDelete.addEventListener('click', e => {
+  tbody.addEventListener('click', e => {
+    const target = e.target;
+    if (target.classList.contains('btn-danger')) {
       const questionTask = questionDeleteTask();
       if (questionTask) {
-        const target = e.target;
         const task = target.closest('tr');
-        if (target.classList.contains('btn-danger')) {
-          const taskID = task.children[0].getAttribute('data-id');
-          removeLocalStore(taskID, name);
-          task.remove();
-          changeTableNumber(tbody);
-        }
+        const taskID = task.children[0].getAttribute('data-id');
+        removeLocalStore(taskID, name);
+        task.remove();
+        changeTableNumber(tbody);
       }
-    });
-  }
+    }
+  });
 };
 
 const finishTodo = (name, tbody) => {
@@ -120,22 +117,7 @@ const editTask = (name, tbody) => {
     }
   });
 };
-// const loginProfile = (modal, bntSubmit, inputModal) => {
-//   inputModal.addEventListener('input', e => {
-//     const target = e.target;
-//     if (target.value.length !== 0) {
-//       bntSubmit.disabled = false;
-//     } else {
-//       bntSubmit.disabled = true;
-//     }
-//   });
-//   bntSubmit.addEventListener('click', e => {
-//     e.preventDefault();
-//     bntSubmit.disabled = true;
-//     inputModal.value = '';
-//     modal.close();
-//   });
-// };
+
 const loginProfile = () => {
   const loginName = prompt('Напишите ваше имя');
   if (loginName === null || loginName.length === 0) {
@@ -150,6 +132,5 @@ export default {
   deleteTask,
   finishTodo,
   editTask,
-  // loginProfile,
   loginProfile,
 };
